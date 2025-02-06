@@ -89,7 +89,6 @@ class Artiste extends Personne {
         return $this->biographie;
     }
 }
-
 // Classe Playlist
 class Playlist {
     private int $id;
@@ -101,6 +100,34 @@ class Playlist {
         $this->id = $id;
         $this->nom = $nom;
         $this->userId = $userId;
+        $this->visibilite = $visibilite;
+    }
+
+    public function getId(): int {
+        return $this->id;
+    }
+
+    public function getNom(): string {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): void {
+        $this->nom = $nom;
+    }
+
+    public function getUserId(): int {
+        return $this->userId;
+    }
+
+    public function setUserId(int $userId): void {
+        $this->userId = $userId;
+    }
+
+    public function getVisibilite(): string {
+        return $this->visibilite;
+    }
+
+    public function setVisibilite(string $visibilite): void {
         $this->visibilite = $visibilite;
     }
 }
@@ -116,6 +143,34 @@ class Album {
         $this->id = $id;
         $this->titre = $titre;
         $this->dateSortie = $dateSortie;
+        $this->artisteId = $artisteId;
+    }
+
+    public function getId(): int {
+        return $this->id;
+    }
+
+    public function getTitre(): string {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): void {
+        $this->titre = $titre;
+    }
+
+    public function getDateSortie(): string {
+        return $this->dateSortie;
+    }
+
+    public function setDateSortie(string $dateSortie): void {
+        $this->dateSortie = $dateSortie;
+    }
+
+    public function getArtisteId(): int {
+        return $this->artisteId;
+    }
+
+    public function setArtisteId(int $artisteId): void {
         $this->artisteId = $artisteId;
     }
 }
@@ -135,9 +190,45 @@ class Track {
         $this->albumId = $albumId;
         $this->categorieId = $categorieId;
     }
+
+    public function getId(): int {
+        return $this->id;
+    }
+
+    public function getTitre(): string {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): void {
+        $this->titre = $titre;
+    }
+
+    public function getDuree(): string {
+        return $this->duree;
+    }
+
+    public function setDuree(string $duree): void {
+        $this->duree = $duree;
+    }
+
+    public function getAlbumId(): int {
+        return $this->albumId;
+    }
+
+    public function setAlbumId(int $albumId): void {
+        $this->albumId = $albumId;
+    }
+
+    public function getCategorieId(): int {
+        return $this->categorieId;
+    }
+
+    public function setCategorieId(int $categorieId): void {
+        $this->categorieId = $categorieId;
+    }
 }
 
-// Classe Catégorie
+// Classe Categorie
 class Categorie {
     private int $id;
     private string $nom;
@@ -146,5 +237,16 @@ class Categorie {
         $this->id = $id;
         $this->nom = $nom;
     }
-}
 
+    public function getId(): int {
+        return $this->id;
+    }
+
+    public function getNom(): string {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): void {
+        $this->nom = $nom;
+    }
+}
