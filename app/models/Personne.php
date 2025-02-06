@@ -1,4 +1,5 @@
 <?php
+require_once "User.php";
 // Classe principale Personne
 class Personne {
     protected int $id;

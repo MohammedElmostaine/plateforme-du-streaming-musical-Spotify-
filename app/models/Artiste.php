@@ -1,6 +1,6 @@
 <?php
-
-// Classe Artiste (hérite de Personne)
+require_once 'User.php';
+// Classe Artiste 
 class Artiste extends Personne {
     private string $biographie;
     

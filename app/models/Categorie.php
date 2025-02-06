@@ -1,4 +1,4 @@
-
+<?php
 // Classe Categorie
 class Categorie {
     private int $id;
