@@ -1,5 +1,5 @@
 <?php
-require_once "User.php";
+require_once ".php";
 // Classe principale Personne
 class Personne {
     protected int $id;
@@ -60,5 +60,40 @@ class Personne {
     public function setRole(string $role): void {
         $this->role = $role;
     }
+    
+public static function login(string $email, string $password): ?Personne {
+    try {
+        $pdo = Database::getInstance()->getConnection();
+        $query = "SELECT * FROM Personne WHERE email = :email";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute(['email' => $email]);
+        
+        if ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            if (password_verify($password, $user['mot_de_passe'])) {
+                return new Personne(
+                    $user['id'],
+                    $user['nom'],
+                    $user['prenom'],
+                    $user['email'],
+                    $user['mot_de_passe'],
+                    $user['role']
+                );
+            }
+        }
+        return null;
+    } catch (PDOException $e) {
+        // Handle or log the error appropriately
+        return null;
+    }
+}
+
+public static function logout(): bool {
+    if (isset($_SESSION['user_id'])) {
+        session_destroy();
+        return true;
+    }
+    return false;
+}
+
 
 }
